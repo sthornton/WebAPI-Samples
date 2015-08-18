@@ -18,13 +18,13 @@ namespace WebApiFun.Controllers
     {
         private WebApiFunContext db = new WebApiFunContext();
 
-        // GET: api/Customers1
+        // GET: api/CustomersScaffolded
         public IQueryable<Customer> GetCustomers()
         {
             return db.Customers;
         }
 
-        // GET: api/Customers1/5
+        // GET: api/CustomersScaffolded/5
         [ResponseType(typeof(Customer))]
         public async Task<IHttpActionResult> GetCustomer(int id)
         {
@@ -37,7 +37,7 @@ namespace WebApiFun.Controllers
             return Ok(customer);
         }
 
-        // PUT: api/Customers1/5
+        // PUT: api/CustomersScaffolded/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutCustomer(int id, Customer customer)
         {
@@ -72,7 +72,7 @@ namespace WebApiFun.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Customers1
+        // POST: api/CustomersScaffolded
         [ResponseType(typeof(Customer))]
         public async Task<IHttpActionResult> PostCustomer(Customer customer)
         {
@@ -87,7 +87,7 @@ namespace WebApiFun.Controllers
             return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
         }
 
-        // DELETE: api/Customers1/5
+        // DELETE: api/CustomersScaffolded/5
         [ResponseType(typeof(Customer))]
         public async Task<IHttpActionResult> DeleteCustomer(int id)
         {

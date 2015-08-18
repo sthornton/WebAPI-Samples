@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using WebApiFun.Data;
 using WebApiFun.Models;
 
@@ -11,7 +12,6 @@ namespace WebApiFun.Controllers
 {
     public class CustomersController : ApiController
     {
-        [HttpGet]
         public IHttpActionResult GetAllCustomers()
         {
             WebApiFunContext db = new WebApiFunContext();
@@ -19,7 +19,7 @@ namespace WebApiFun.Controllers
             return Ok(customers);
         }
 
-        [HttpGet]
+        [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)
         {
             WebApiFunContext db = new WebApiFunContext();
@@ -30,7 +30,7 @@ namespace WebApiFun.Controllers
                 return NotFound();
         }
 
-        [HttpPost]
+        [ResponseType(typeof(Customer))]
         public IHttpActionResult PostCustomer(Customer customer)
         {
             WebApiFunContext db = new WebApiFunContext();
@@ -39,7 +39,7 @@ namespace WebApiFun.Controllers
             return Ok(customer);
         }
 
-        [HttpPut]
+        [ResponseType(typeof(Customer))]
         public IHttpActionResult PutCustomer(Customer customer)
         {
             WebApiFunContext db = new WebApiFunContext();
@@ -48,7 +48,7 @@ namespace WebApiFun.Controllers
             return Ok(customer);
         }
 
-        [HttpDelete]
+        [ResponseType(typeof(void))]
         public IHttpActionResult DeleteCustomer(int id)
         {
             WebApiFunContext db = new WebApiFunContext();
