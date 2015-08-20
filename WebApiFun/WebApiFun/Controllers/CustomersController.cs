@@ -7,16 +7,30 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using WebApiFun.Data;
 using WebApiFun.Models;
+using System.Web.Http.OData;
 
 namespace WebApiFun.Controllers
 {
     public class CustomersController : ApiController
     {
-        public IHttpActionResult GetAllCustomers()
+        //public IHttpActionResult GetAllCustomers()
+        //{
+        //    WebApiFunContext db = new WebApiFunContext();
+        //    var customers = db.Customers.ToList();
+        //    return Ok(customers);
+        //}
+
+       
+        /// <summary>
+        /// Shows how to use OData with standard ApiController.  Works
+        /// great if you just need it for one entity.
+        /// </summary>
+        /// <returns></returns>
+        [EnableQuery]
+        public IQueryable<Customer> GetAllCustomers()
         {
             WebApiFunContext db = new WebApiFunContext();
-            var customers = db.Customers.ToList();
-            return Ok(customers);
+            return db.Customers.AsQueryable();
         }
 
         [ResponseType(typeof(Customer))]
